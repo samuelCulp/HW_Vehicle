@@ -10,68 +10,12 @@ using System.Windows.Forms;
 using WindowsFormsApp2.Properties;
 
 
+/*This program is to evaluate subjectively the automotive industry similarly to 
+ * the Carvana website.It takes input from the user via the Combo box and then 
+ * displays the info on in a list view. The user can click and then open the module
+ * of the car and it will display on a label.
+ */
 
-/*# Objective
-To evaluate subjectively the Automotive Industry from a specific Car Dealers website Search Functionality.
-
-# Deliverables
-1. Word Document
-    * File Name: HW_Vehicle_[username].docx
-        * [username] is the portion of your email before @jeffersonstate.edu
-    * Have GitHub Repository URL that is accessible to me to obtain a copy of the Repository
-2. Excel Document
-    * File Name: HW_Vehicle_[username].xlsx
-        * [username] is the portion of your email before @jeffersonstate.edu
-    * Table Listing each Make, Model, Year, Body Type, and Color combination
-        * Certain Models will only have 1 Body Type, so pay attention
-        * Certain Makes will have limited Body Types, so pay attention
-    * You will necessarily have a long list (~350 +/- Unique), there should be no less than 5 different combination (Year + Body Type + Color) for each Make & Model.
-        * Focus on the variations between Make + Model + Body Type + Color; Year does not have to factor in to the combination list
-
-# Criteria
-1. In a browser, Navigate to: https://www.carvana.com/cars
-2. Based on the Drop Down boxes: (excluding "Payment & Price", "Features", and "More Filters")
-    1. From the "Make & Model", use these fourteen (14) Make's as your guide
-        1. Buick, Cadillac, Chevrolet, Dodge, Ford, GMC, Hyundai, Jeep, Nissan, Pontiac, Ram, Saturn, Subaru, and Toyota
-    2. From the "Make & Model", pick 5 Models for each Make.
-    2. All Body Types must be represented.
-        - A single Make & Model may have multiple Body Type availability.
-3. Assume there are 5 Color Options for any Make & Model: Black, White, Red, Green, and Beige
-4. Some Makes & Model's will NOT have all Body Types, so account for that unique variation
-5. Based on your observation with the inventory, you should develop Object of these types
-    1. Structures: At least two (2)
-    2. Classes: At least one (1) for each "Make & Model" + "Body Type" combination
-        1. There should be at least one (1) Abstract for each Model, there could be more
-    3. Interfaces: At least one (1) effectively implemented; NO gratuitous unimplemented Interfaces.
-        * Must be a template architecture for those Classes that implement them.
-        * All classes must inherit or implement an Interfaces contract.
-
-# Hints
-* FIRST: Identify Make + Model combinations
-* SECOND: Create Unique Body Type Options for the Make + Model + Year combinations
-    * Think of this like the Options for Make & Model
-    * Body Type could include 2, 3, 4, or 5 door; 4-door Cars have 5 doors, find the 5th.
-        > Certain Body Styles are limited to 2-door, so make sure to account for that.
-    * Body Type could also include 2x4, 4x4, and AWD
-* Third: Add Color variants for each of the Combinations.
-* Lastly: Based on observed consistencies, create a Class that will Describe the Make + Model
-    * Start with the combinations you know, abstract classes appropriately and implement Interfaces from the Abstract Class (typically)
-    * Make sure to have the basic Actions for each vehicle:
-        1. Door Status; account for all doors, can be separated into compartmental checks
-        2. Engine Status
-        3. Motion Status
-        4. Key Status
-        5. Break Status
-    * Attributes for the Vehicles:
-        > Certain attributes will ONLY apply to certain Body Types
-        1. Tires
-        2. Doors
-        3. Cabin Style
-        4. Body Type
-        5. Bed Length
-        6. MPG - City
-        7. MPG - Highway
- * */
 
 namespace WindowsFormsApp2
 {
@@ -88,7 +32,7 @@ namespace WindowsFormsApp2
         public string[] arr1;
         public int makeSet = 0;
 
-        enum Type// enum for the Type of car
+        enum Type// enum for the Type of car combo box
         {
             Suv,
             Sedan, 
@@ -100,7 +44,7 @@ namespace WindowsFormsApp2
             Wagon
         }
 
-        enum Make// enum for the make of the car 
+        enum Make// enum for the make of the car combo box
         {
             Buick,
             Cadillac,
@@ -123,15 +67,12 @@ namespace WindowsFormsApp2
             InitializeComponent();
             val = "Make & Model";
             make_model.Text = val;
-            
-           
+               
     }
 
-        private void Form1_Load(object sender, EventArgs e) // note make a method for combo boxes
+        private void Form1_Load(object sender, EventArgs e)
             {
                
-            
- 
                 foreach (int i in Enum.GetValues(typeof(Make)))// for the make combo box 
                 {
                     make_model.Items.Add(Enum.GetName(typeof(Make), i));
@@ -141,129 +82,121 @@ namespace WindowsFormsApp2
                     type_box.Items.Add(Enum.GetName(typeof(Type), k));
                 }
 
-
             // this puts the info in the form
-            //his.Controls.Add(make_model);
-
             }
  
             private void make_model_SelectedIndexChanged(object sender, EventArgs e)
             {
 
 
-            list.Items.Clear();
+            list.Items.Clear(); // clears the list every time the user inputs something new
             type_box.Click += type_box_SelectedIndexChanged;
             
 
-            switch (make_model.SelectedIndex)
+            switch (make_model.SelectedIndex) // this is for the combo boxes 
             {
                 case 0:// this output is Buick
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);// get the info from a file called cartypeob
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 1:// this output is Buick
+                case 1:
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
 
-                case 2:// this output is Buick
+                case 2:
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 3:// this output is Buick
+                case 3:
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 4:// this output is Buick
+                case 4:
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 5:// this output is Buick
+                case 5:
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 6:// this output is Buick
+                case 6:
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 7:// this output is Buick
+                case 7:
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 8:// this output is Buick
+                case 8:
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 9:// this output is Buick
+                case 9:
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 10:// this output is Buick
+                case 10:
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 11:// this output is Buick
+                case 11:
                     for (int i = 0; i < 3; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 12:// this output is Buick
+                case 12:
 
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
-                case 13:// this output is Buick
+                case 13:
                     for (int i = 0; i < 5; i++)
                     {
-                        arr = Class2.GetModel(make_model.SelectedIndex);
+                        arr = CarTypeOB.GetModel(make_model.SelectedIndex);
                         list.Items.Add(arr[i]);
                     }
                     break;
             }
-               // if (make_model.SelectedIndex != -1) {
-                 //   num = make_model.SelectedIndex;
-                   // make_model.ResetText();
-                    //make_model.Items.RemoveAt(make_model.SelectedIndex);
-                //}
-           // BeginInvoke(new Action(() => make_model.Text = Enum.GetName(typeof(Make), num)));
+
                 
         }
 
@@ -276,9 +209,10 @@ namespace WindowsFormsApp2
 
       
 
-            private void button1_Click(object sender, EventArgs e)
+            private void button1_Click(object sender, EventArgs e) // button
             {
             infoLabel.Text = list.SelectedItems[0].ToString();
+            //infoLabel.Text = list.Items[0].ToString();
         }
 
         private void type_box_SelectedIndexChanged(object sender, EventArgs e)
@@ -288,14 +222,14 @@ namespace WindowsFormsApp2
             make_model.Click += make_model_SelectedIndexChanged;
             
 
-            Class2.BodyType body = new Class2.BodyType();
+            CarTypeOB.BodyType body = new CarTypeOB.BodyType();
             if (make_model.SelectedIndex == 0) // wish i would have used a switch statement
             {
-                switch (type_box.SelectedIndex)
+                switch (type_box.SelectedIndex) // for boxes
                 {
 
                     case 0:
-                        body.BuickSUV.ToList().ForEach(element => list.Items.Add(element.ToString()));
+                        body.BuickSUV.ToList().ForEach(element => list.Items.Add(element.ToString()));// foreach loop that puts info in listview
                         break;
                     case 1:
                         body.BuickSedan.ToList().ForEach(element => list.Items.Add(element.ToString()));
@@ -346,7 +280,7 @@ namespace WindowsFormsApp2
                     case 1:
                         body.DodgeSedan.ToList().ForEach(element => list.Items.Add(element.ToString()));
                         break;
-                    case 2:
+                    case 4:
                         body.DodgeCoupe.ToList().ForEach(element => list.Items.Add(element.ToString()));
                         break;
                 }
@@ -500,58 +434,58 @@ namespace WindowsFormsApp2
 
 
                     case 1:
-                        for (int i = 0; i < Class2.GetTypeAllSedan(num).GetLength(num); i++)
+                        for (int i = 0; i < CarTypeOB.GetTypeAllSedan(num).GetLength(num); i++)
                         {
-                            arr1 = Class2.GetTypeAllSedan(type_box.SelectedIndex);
+                            arr1 = CarTypeOB.GetTypeAllSedan(type_box.SelectedIndex);
                             list.Items.Add(arr1[i]);
                         }
                         break;
                     case 0:
-                        for (int i = 0; i < Class2.GetTypeAllSUV(num).GetLength(num); i++)
+                        for (int i = 0; i < CarTypeOB.GetTypeAllSUV(num).GetLength(num); i++)
                         {
-                            arr1 = Class2.GetTypeAllSUV(type_box.SelectedIndex);
+                            arr1 = CarTypeOB.GetTypeAllSUV(type_box.SelectedIndex);
                             list.Items.Add(arr1[i]);
                         }
                         break;
                     case 4:
-                        for (int i = 0; i < Class2.GetTypeAllCoupe(num).GetLength(num); i++)
+                        for (int i = 0; i < CarTypeOB.GetTypeAllCoupe(num).GetLength(num); i++)
                         {
-                            arr1 = Class2.GetTypeAllCoupe(type_box.SelectedIndex);
+                            arr1 = CarTypeOB.GetTypeAllCoupe(type_box.SelectedIndex);
                             list.Items.Add(arr1[i]);
                         }
                         break;
                     case 6:
-                        for (int i = 0; i < Class2.GetTypeAllConvertible(num).GetLength(num); i++)
+                        for (int i = 0; i < CarTypeOB.GetTypeAllConvertible(num).GetLength(num); i++)
                         {
-                            arr1 = Class2.GetTypeAllConvertible(type_box.SelectedIndex);
+                            arr1 = CarTypeOB.GetTypeAllConvertible(type_box.SelectedIndex);
                             list.Items.Add(arr1[i]);
                         }
                         break;
                     case 5:
-                        for (int i = 0; i < Class2.GetTypeAllMinivan(num).GetLength(num); i++)
+                        for (int i = 0; i < CarTypeOB.GetTypeAllMinivan(num).GetLength(num); i++)
                         {
-                            arr1 = Class2.GetTypeAllMinivan(type_box.SelectedIndex);
+                            arr1 = CarTypeOB.GetTypeAllMinivan(type_box.SelectedIndex);
                             list.Items.Add(arr1[i]);
                         }
                         break;
                     case 2:
-                        for (int i = 0; i < Class2.GetTypeAllHatchback(num).GetLength(num); i++)
+                        for (int i = 0; i < CarTypeOB.GetTypeAllHatchback(num).GetLength(num); i++)
                         {
-                            arr1 = Class2.GetTypeAllHatchback(type_box.SelectedIndex);
+                            arr1 = CarTypeOB.GetTypeAllHatchback(type_box.SelectedIndex);
                             list.Items.Add(arr1[i]);
                         }
                         break;
                     case 3:
-                        for (int i = 0; i < Class2.GetTypeAllTruck(num).GetLength(num); i++)
+                        for (int i = 0; i < CarTypeOB.GetTypeAllTruck(num).GetLength(num); i++)
                         {
-                            arr1 = Class2.GetTypeAllTruck(type_box.SelectedIndex);
+                            arr1 = CarTypeOB.GetTypeAllTruck(type_box.SelectedIndex);
                             list.Items.Add(arr1[i]);
                         }
                         break;
                     case 7:
-                        for (int i = 0; i > Class2.GetTypeAllWagon(num).GetLength(num); i++)
+                        for (int i = 0; i > CarTypeOB.GetTypeAllWagon(num).GetLength(num); i++)
                         {
-                            arr1 = Class2.GetTypeAllWagon(type_box.SelectedIndex);
+                            arr1 = CarTypeOB.GetTypeAllWagon(type_box.SelectedIndex);
                             list.Items.Add(arr1[i]);
                         }
                         break;
@@ -559,11 +493,13 @@ namespace WindowsFormsApp2
             }
         }
 
-        private void reset_Click(object sender, EventArgs e)
+        private void reset_Click(object sender, EventArgs e) // reset button not perfect 
         {
-
+            infoLabel.Text = "";
             type_box.ResetText();
             make_model.ResetText();
+            type_box.Items.Equals(0);
+            make_model.Items.Equals(0);
             type_box.Text = "Body Type";
             make_model.Text = val;
             list.Items.Clear();

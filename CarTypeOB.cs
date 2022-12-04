@@ -6,16 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms.VisualStyles;
 
+
+//This file is just for the objects for the project
 namespace WindowsFormsApp2
 {
-    internal class Class2
+    internal class CarTypeOB
     {
 
 
 
 
 
-        public class BodyType
+        public class BodyType // objects for body types
         {
             public string[] BuickSUV = {"Enclave", "Encore", "Envision"};
             public string[] CadillacSUV = { "Escalade" };
@@ -46,7 +48,7 @@ namespace WindowsFormsApp2
             public string[] PontiacHatch = { "Vibe" };
 
             public string[] ChevroletCoupe = { "Camaro", "Corvette" };
-            public string[] DodgeCoupe = { "Challenger" };
+            public string[] DodgeCoupe = {"Challenger" };
             public string[] FordCoupe = { "Mustang" };
             public string[] NissanCoupe = { "GT-R" };
             public string[] SubaruCoupe = { "BRZ" };
@@ -67,7 +69,7 @@ namespace WindowsFormsApp2
 
  
 
-        public static string[] GetModel(int x) 
+        public static string[] GetModel(int x) // all the models and makes in one function
             {
                 switch (x)
                 {
@@ -116,48 +118,48 @@ namespace WindowsFormsApp2
                 }
                 return null;
             }
-        public static string[] GetTypeAllSUV(int t)
+        public static string[] GetTypeAllSUV(int t) // for all the suvs
         {
             string[] j = { "Encore", "Enclave", "Envision","Escalade", "Blazer", "Durango", "Explorer", "Acadia",
                         "Yukon", "Kona", "Compass", "Cherokee","Liberty", "Wrangler", "Pathfinder", "VUE", "Forester",
                            "Crosstrek",  "Ascent", "4Runner"};
             return j;
         }
-        public static string[] GetTypeAllSedan(int t)
+        public static string[] GetTypeAllSedan(int t) // for all the suvs
         {
             string[] j = { "LaCrosse" , "CTS", "ATS" , "DTS", "Cruze", "Dart" , "Charger" , "Avenger" , "Fusion" 
             , "Sonata", "Elantra", "Azera", "Accent", "Altima", "Sentra", "G8", "G6", "G5", "Aura", "Cramry", "Corolla", "WRX"};
             return j;
         }
-        public static string[] GetTypeAllHatchback(int t)
+        public static string[] GetTypeAllHatchback(int t)// for all the hatchback
         {
             string[] j = { "Prius", "Vibe" };
             return j;
         }
-        public static string[] GetTypeAllCoupe(int t)
+        public static string[] GetTypeAllCoupe(int t)// for all the coupes
         {
             string[] j = { "CTS", "Camaro", "Corvette", "Challenger", "Mustang", "GT-R", "BRZ" };
             
             return j;
         }
-        public static string[] GetTypeAllTruck(int t)
+        public static string[] GetTypeAllTruck(int t)// for all the trucks
         {
             string[] j = { "Silverado 1500 Double Cab", "F150", "Maverick" , "Sierra 1500 Crew Cab", "Savana 1500 Passenger", "Canyon Extended Cab" ,
                             "Gladiator",  "1500 Classic", "1500 Classic Quad Cab", "2500 Regular Cab", "3500 Crew Cab",
                             "Tacoma Double Cab", "C/V"};
             return j;
         }
-        public static string[] GetTypeAllMinivan(int t)
+        public static string[] GetTypeAllMinivan(int t) // for all the minivans
         {
             string[] j = { "Quest"  };
             return j;
         }
-        public static string[] GetTypeAllConvertible(int t)
+        public static string[] GetTypeAllConvertible(int t)// for all the convertibles
         {
             string[] j = { "Cascada", "Solstice" };
             return j;
         }
-        public static string[] GetTypeAllWagon(int t)
+        public static string[] GetTypeAllWagon(int t)// wagon
         {
             string[] j = { "NO_RESULTS"};
             return j;
